@@ -1,10 +1,15 @@
 language: node_js
-node_js: 
-  - 13
+node_js:
+- 13
 install:
-  - npm ci
+- npm ci
 script:
-  - npm test
+- npm test
 cache:
   directories:
-    - "$HOME/.npm"
+  - "$HOME/.npm"
+deploy:
+  provider: heroku
+  api_key:
+    secure: UCjQfbA0cajIsSOHCAps8j4UB+0+qMtamuCQ3/u+20BCiWRQziJG2IlNzoTavRmNjp9u2X5NtHcZRovkZsqXdMh6DV8EPzBhZPjg7rkZ2nN975UUoYa0beGXXNnIymKfmfqvNUxmsNTuuwTsXPx079lKPqkRDxi+0qvvtN+YeonBh8jTAQjfZOFj3fkt71bdix6ylUS4Tgh4QoxjMJAQoUZNgRFFmPt6ipuKJlrH3A8x17Ob23OSsnqVamYrE31VVBtEI6EyPd3pemEfYpJ2DnMrNUUglW51+G1JfXAag2mRFaIBtFCOB0JtsSvGsRAbRXAZDC1YYBp0L3vDOfHpkIKgkF4iUs/DFXV5QVdSv72VCGSOCKSwLin4tNG3yy5SnLfFbWcohqH7/g9wyzTKXnhia5v3JEq3DLL2kYq4aWsVvMyLgdp524/1uTDHHJaRDIgdlDjiZi0jjBfAFMbd/Xtcf42YtudS3DAoqsetzX5+yNrIQiEXTCo1E96a2G2isVE5P7KjOV1iphubR0MyBYCbr3ZODzWySyZZztCRzSY9OnPpsL8EEAs0mpd4WfX4MfEkqJhsuhSm5AnzofLBlvL+JBXin5apIB6VAG3KoUOiSOFQKu3IakP94ijftdEPgvBlKrhmCcLwDplfhv4xjLvAYok2r01IXTcc82lM7Lc=
+  app: ftjmes
