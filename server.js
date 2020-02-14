@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(expressPino({ logger }))
 }
 
-app.set('views', path.join(__dirname, 'views'), { maxAge: 86400000 })
+app.set('views', path.join(__dirname, 'pages'), { maxAge: 86400000 })
 app.set('view engine', 'pug')
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(sassMiddleware({
