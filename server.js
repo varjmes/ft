@@ -7,6 +7,7 @@ const expressPino = require('express-pino-logger')
 const sassMiddleware = require('node-sass-middleware')
 
 const logger = require('./helpers/logger')
+const httpsRedirect = require('./helpers/httpsRedirect')
 const indexRouter = require('./routes/index')
 
 const app = express()
@@ -31,6 +32,7 @@ app.use(sassMiddleware({
 }))
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(httpsRedirect)
 
 app.use('/', indexRouter)
 
