@@ -42,9 +42,9 @@ app.get('/', (req, res, next) => {
 })
 
 app.get('/search', async (req, res, next) => {
-  const term = req.query.q
-  const results = await search(term)
-  res.render('index', { term, results })
+  const { q: term, index } = req.query
+  const results = await search(term, index)
+  res.render('index', { term, results, index: parseInt(index, 10) })
 })
 
 app.use((req, res, next) => {
