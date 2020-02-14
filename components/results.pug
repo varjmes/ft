@@ -1,8 +1,8 @@
 .o-grid-row(data-o-grid-colspan='center 8')
   .o-teaser-collection
     if results[0].results
-      h2.o-teaser-collection__heading.o-teaser-collection__heading Search results for "#{term}"
       include ../components/pagination
+      h2.o-teaser-collection__heading.o-teaser-collection__heading Search results for "#{term}"
       ul.o-teaser-collection__items
         each result in results[0].results
           li.o-teaser-collection__item
