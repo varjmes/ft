@@ -1,6 +1,20 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+.container {
+  margin-top: var(--o-spacing-m12);
+  max-width: unset; }
 
-a {
-  color: #00B7FF; }
+.heading:after {
+  content: none; }
+
+.subheading {
+  margin-top: var(--o-spacing-s1);
+  margin-bottom: var(--o-spacing-s3); }
+  .subheading:after {
+    content: '';
+    display: block;
+    border-bottom: calc(.34ex + 1px) solid;
+    width: 100%;
+    max-width: 100%;
+    padding-top: var(--o-spacing-s4); }
+
+.text--center {
+  text-align: center; }
