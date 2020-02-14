@@ -1,0 +1,13 @@
+.o-grid-row(data-o-grid-colspan='center 8')
+  .o-teaser-collection
+    h2.o-teaser-collection__heading.o-teaser-collection__heading Search results for "#{term}"
+    ul.o-teaser-collection__items
+      each result in results
+        li.o-teaser-collection__item
+          .o-teaser.o-teaser--large(data-o-component='o-teaser')
+            .o-teaser__content
+              h2.o-teaser__heading
+                a(href=result.location.uri)= result.title.title
+              p.o-teaser__standfirst= result.editorial.subheading
+              .o-teaser__timestamp
+              time.o-date.o-teaser__timestamp(data-o-component='o-date', datetime=result.lifecycle.initialPublishDateTime)

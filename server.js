@@ -8,10 +8,13 @@ const sassMiddleware = require('node-sass-middleware')
 
 const logger = require('./helpers/logger')
 const httpsRedirect = require('./helpers/httpsRedirect')
-const indexRouter = require('./routes/index')
+const search = require('./helpers/search')
 
 const app = express()
 const port = process.env.PORT || 3000
+
+// Local variables
+app.locals.title = 'Headline search'
 
 // Set caching on views to a day
 app.set('views', path.join(__dirname, 'views'), { maxAge: 86400000 })
@@ -34,7 +37,15 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(httpsRedirect)
 
-app.use('/', indexRouter)
+app.get('/', (req, res, next) => {
+  res.render('index')
+})
+
+app.get('/search', async (req, res, next) => {
+  const term = req.query.q
+  const results = await search(term)
+  res.render('index', { term, results })
+})
 
 app.use((req, res, next) => {
   next(createError(404))

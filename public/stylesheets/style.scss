@@ -12,15 +12,6 @@
 .subheading {
   margin-top: var(--o-spacing-s1);
   margin-bottom: var(--o-spacing-s3);
-
-  &:after {
-    content: '';
-    display: block;
-    border-bottom: calc(.34ex + 1px) solid;
-    width: 100%;
-    max-width: 100%;
-    padding-top: var(--o-spacing-s4);
-  }
 }
 
 .text--center {
