@@ -1,16 +1,24 @@
+require('dotenv-safe').config()
+
 const createError = require('http-errors')
 const express = require('express')
 const path = require('path')
+const expressPino = require('express-pino-logger')
 const sassMiddleware = require('node-sass-middleware')
 
+const logger = require('./helpers/logger')
 const indexRouter = require('./routes/index')
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const port = process.env.PORT || 3000
 
 // Set caching on views to a day
 app.set('views', path.join(__dirname, 'views'), { maxAge: 86400000 })
 app.set('view engine', 'pug')
+
+if (process.env.NODE_ENV !== 'test') {
+  app.use(expressPino({ logger }))
+}
 
 // Parsing incoming requests into JSON and makes it available as `req.body`
 app.use(express.json())
@@ -40,6 +48,10 @@ app.use((err, req, res, next) => {
   res.render('error')
 })
 
-app.listen(PORT, () => console.log(`:) jmes' ft app listening on port ${PORT}!`))
+app.listen(port, () => {
+  if (process.env.NODE_ENV !== 'test') {
+    logger.info(`:) jmes' ft app listening on port ${port}!`)
+  }
+})
 
 module.exports = app
