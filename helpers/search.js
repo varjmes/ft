@@ -10,7 +10,7 @@ const ftApi = axios.create({
   },
 })
 
-const search = async (term) => {
+const search = async (term, index = 0) => {
   let results = []
 
   try {
@@ -18,12 +18,13 @@ const search = async (term) => {
     const response = await ftApi.post('/', {
       queryString: `title:"${term}"`,
       resultContext: {
+        offset: index,
         maxResults: 20,
         aspects: ['title', 'lifecycle', 'location', 'summary', 'editorial'],
       },
     })
 
-    results = response.data.results[0].results
+    results = response.data.results
   } catch (error) {
     logger.error(error)
   }

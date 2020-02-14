@@ -1,0 +1,18 @@
+- var idx = index || 0
+- var offset = 20
+- var totalResults = results[0].indexCount
+- var maxOffset = Math.min(idx + 20, totalResults)
+- var minOffset = Math.max(0, idx - 20)
+
+.o-grid-row(data-o-grid-colspan='center 8').text--center
+  .pagination
+    if idx > 0
+      a.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-left(href=`/search?q=${term}&index=${minOffset}`)
+        | Previous page
+
+    span.counter
+      | Viewing results #{idx}&ndash;#{maxOffset} of #{totalResults}
+    
+    if idx + offset < totalResults
+      a.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-right(href=`/search?q=${term}&index=${maxOffset}`)
+        | Next page
