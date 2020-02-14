@@ -8,6 +8,7 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body.o-colors-page-background
     include ./header
-    block content
+    .container
+      block content
     include ./footer
     script(src='https://www.ft.com/__origami/service/build/v2/bundles/js?modules=o-header@^8.0.2,o-footer@^7.0.2,o-date@^4.0.0')
