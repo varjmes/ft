@@ -2,8 +2,8 @@ require('dotenv').config()
 
 const createError = require('http-errors')
 const express = require('express')
-const path = require('path')
 const expressPino = require('express-pino-logger')
+const path = require('path')
 const sassMiddleware = require('node-sass-middleware')
 
 const logger = require('./helpers/logger')
@@ -13,30 +13,22 @@ const search = require('./helpers/search')
 const app = express()
 const port = process.env.PORT || 3000
 
-// Local variables
 app.locals.title = 'Headline search'
-
-// Set caching on views to a day
-app.set('views', path.join(__dirname, 'views'), { maxAge: 86400000 })
-app.set('view engine', 'pug')
 
 if (process.env.NODE_ENV !== 'test') {
   app.use(expressPino({ logger }))
 }
 
-// Parsing incoming requests into JSON and makes it available as `req.body`
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-
+app.set('views', path.join(__dirname, 'views'), { maxAge: 86400000 })
+app.set('view engine', 'pug')
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   indentedSyntax: false,
 }))
 
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(httpsRedirect)
-
 app.get('/', (req, res, next) => {
   res.render('index')
 })
