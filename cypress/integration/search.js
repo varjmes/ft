@@ -3,6 +3,12 @@ describe('Searching for headlines', () => {
     cy.visit('/')
   })
 
+  it('has no detectable acessibility violations on load', () => {
+    cy.search('pizza')
+    cy.injectAxe()
+    cy.checkA11y()
+  })
+
   it('should submit the form when on enter key', () => {
     cy.search('james', true)
 
