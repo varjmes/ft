@@ -2,6 +2,6 @@ extends ../components/layout
 
 block content
   .o-grid-row(data-o-grid-colspan='center 8').text--center
-    h1.o-editorial-typography-heading-level-1= message
+    h1.o-editorial-typography-heading-level-1(data-cy='error-message')= message
     h2.o-editorial-typography-heading-level-2= error.status
     pre #{error.stack}

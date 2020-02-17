@@ -7,12 +7,12 @@
 .o-grid-row(data-o-grid-colspan='center 8').text--center
   .pagination
     if idx > 0
-      a.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-left(href=`/search?q=${term}&index=${minOffset}`)
+      a.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-left(href=`/search?q=${term}&index=${minOffset}`, data-cy='previous')
         | Previous page
 
     span.counter
       | Viewing results #{idx}&ndash;#{maxOffset} of #{totalResults}
     
     if idx + offset < totalResults
-      a.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-right(href=`/search?q=${term}&index=${maxOffset}`)
+      a.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-right(href=`/search?q=${term}&index=${maxOffset}`, data-cy='next')
         | Next page
