@@ -1,0 +1,8 @@
+{
+  "globals": {
+    "Cypress": false,
+    "cy": false,
+    "before": false,
+    "after": false
+  }
+}

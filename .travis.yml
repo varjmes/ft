@@ -1,13 +1,30 @@
 language: node_js
 node_js:
 - 13
-install:
-- npm ci
-script:
-- npm test
+
+addons:
+  apt:
+    packages:
+    # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
+    - libgconf-2-4
+
 cache:
   directories:
   - "$HOME/.npm"
+  - "$HOME/.cache"
+
+install:
+- npm ci
+
+before_script:
+# Start the server, where `&` tells travis to run it as a
+# non-blocking background process
+- npm start -- --silent &
+
+script:
+# - npm test
+- npm run cypress:run
+
 deploy:
   provider: heroku
   api_key:

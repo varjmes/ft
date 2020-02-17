@@ -2,8 +2,8 @@
   .o-teaser-collection
     if results[0].results
       include ../components/pagination
-      h2.o-teaser-collection__heading.o-teaser-collection__heading Search results for "#{term}"
-      ul.o-teaser-collection__items
+      h2.o-teaser-collection__heading.o-teaser-collection__heading(data-cy='results-header') Search results for "#{term}"
+      ul.o-teaser-collection__items(data-cy='results-list')
         each result in results[0].results
           li.o-teaser-collection__item
             .o-teaser.o-teaser--large(data-o-component='o-teaser')
@@ -15,4 +15,4 @@
                 time.o-date.o-teaser__timestamp(data-o-component='o-date', datetime=result.lifecycle.initialPublishDateTime)
       include ../components/pagination
     else
-        h2.o-teaser-collection__heading.o-teaser-collection__heading No results found for "#{term}"
+        h2.o-teaser-collection__heading.o-teaser-collection__heading(data-cy='results-header') No results found for "#{term}"

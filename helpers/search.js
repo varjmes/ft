@@ -20,7 +20,7 @@ const search = async (term, index = 0) => {
       resultContext: {
         offset: index,
         maxResults: 20,
-        aspects: ['title', 'lifecycle', 'location', 'summary', 'editorial'],
+        aspects: ['title', 'lifecycle', 'location', 'editorial'],
       },
     })
 
