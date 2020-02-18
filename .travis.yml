@@ -22,7 +22,6 @@ before_script:
 - npm start -- --silent &
 
 script:
-# - npm test
 - npm run cypress:run
 
 deploy:

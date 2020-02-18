@@ -1,7 +1,7 @@
 .o-grid-row(data-o-grid-colspan='center 12 S10 L8')
   .o-teaser-collection
     if results[0].results
-      include ../components/pagination
+      include ./pagination
       h2.o-teaser-collection__heading.o-teaser-collection__heading(data-cy='results-header') Search results for "#{term}"
       ul.o-teaser-collection__items(data-cy='results-list')
         each result in results[0].results
@@ -13,6 +13,6 @@
                 p.o-teaser__standfirst= result.editorial.subheading
                 .o-teaser__timestamp
                 time.o-date.o-teaser__timestamp(data-o-component='o-date', datetime=result.lifecycle.initialPublishDateTime)
-      include ../components/pagination
+      include ./pagination
     else
         h2.o-teaser-collection__heading.o-teaser-collection__heading(data-cy='results-header') No results found for "#{term}"
