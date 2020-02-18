@@ -63,7 +63,7 @@ is deployed to [Heroku](https://heroku.com).
 ## Tests
 
 Due to how simple the app is, I felt time was better spent writing true end to
-end tests rather than mocking the API in axios for lower level integration tests.
+end tests rather than mocking the axios requests for lower level integration tests.
 The Cypress tests are testing the live site: whilst this is good to ensure the
 true form of the app is tested, it can be quite slow in CI particularly as the
 number of tests increase. We could considering using

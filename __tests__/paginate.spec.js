@@ -36,7 +36,6 @@ describe('Paginate', () => {
     })
   })
 
-
   it('should return correct params when all results have been viewed', () => {
     const result = paginate(100, offset, 100)
     expect(result).toEqual({
