@@ -1,8 +1,9 @@
 require('dotenv').config()
 
-const createError = require('http-errors')
+const compression = require('compression')
 const express = require('express')
 const expressPino = require('express-pino-logger')
+const createError = require('http-errors')
 const path = require('path')
 const sassMiddleware = require('node-sass-middleware')
 
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 app.set('views', path.join(__dirname, 'views'), { maxAge: 86400000 })
 app.set('view engine', 'pug')
+app.use(compression())
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
