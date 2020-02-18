@@ -14,6 +14,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.locals.title = 'Headline search'
+app.locals.description = 'Search all of the Financial Times headlines, today.'
 
 if (process.env.NODE_ENV !== 'test') {
   app.use(expressPino({ logger }))
@@ -48,6 +49,7 @@ app.use((err, req, res, next) => {
   // Set local message scoped to the request in question
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
+  res.locals.title = err.message
 
   res.status(err.status || 500)
   res.render('error')
