@@ -77,7 +77,7 @@ monitor requests to our application. Not only can we keep track of the frequency
 and nature of errors (e.g. 500's, 404's), we can visualise search trends which
 could in turn influence what content we write.
 
-### Application Performance Metrics (APM)
+### Application Performance Management (APM)
 
 Using APM platforms like [Datadog](https://www.datadoghq.com/) we can monitor
 our app performance (CPU, memory load and more) in the cloud, all of which can
