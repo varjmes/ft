@@ -60,7 +60,7 @@ is deployed to [Heroku](https://heroku.com).
 
 ## Improvements
 
-## Tests
+### Tests
 
 Due to how simple the app is, I felt time was better spent writing true end to
 end tests rather than mocking the axios requests for lower level integration tests.
@@ -70,26 +70,26 @@ number of tests increase. We could considering using
 [Cypress fixtures](https://docs.cypress.io/api/commands/fixture.html) to mock out
 responses from the headlines api.
 
-## Logging
+### Logging
 
 If we hooked up our Pino logs to [Kibana](https://www.elastic.co/kibana) we can
 monitor requests to our application. Not only can we keep track of the frequency
 and nature of errors (e.g. 500's, 404's), we can visualise search trends which
 could in turn influence what content we write.
 
-## Application Performance Metrics (APM)
+### Application Performance Metrics (APM)
 
 Using APM platforms like [Datadog](https://www.datadoghq.com/) we can monitor
 our app performance (CPU, memory load and more) in the cloud, all of which can
 feed into self defined thresholds that trigger alarms when not met.
 
-## Microservice Architecture
+### Microservice Architecture
 
 Assuming that the application grows and does more than just request the headline
 API, we can considering splitting out the application and api into separate
 microservices.
 
-## Performance
+### Performance
 
 By linking the FT Styles from the Origami Service, I've put render blocking
 requests into the application. On top of that, not all of the CSS in the bundle
@@ -97,7 +97,7 @@ is actually used in my application. Remove that which we don't use and inline
 what is critical to our app. Due to how small and simple the
 application is, this isn't a pressing issue.
 
-## Offline first
+### Offline first
 
 The temptation was there to install a service worker just to tick off all the
 optional requirements in the test, but I wasn't convinced what the benefit would
@@ -105,7 +105,7 @@ be for this application. If this was FT.com website itself I'd use a service
 worker to cache assets and full articles, but for a simple search that doesn't
 yet have much user benefit, I didn't think it was useful.
 
-## Caching
+### Caching
 
 We can cache requests to `/search` to speed up response time. We can also
 serve our assets through a CDN.
