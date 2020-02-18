@@ -3,7 +3,9 @@ const paginate = (index = 0, offset, totalResults) => {
 
   return {
     totalResults,
-    nextIndex: idx + offset < totalResults ? Math.min(idx + offset, totalResults) : 0,
+    hasNext: idx + offset < totalResults,
+    hasPrevious: index > 0,
+    nextIndex: Math.min(idx + offset, totalResults),
     previousIndex: Math.max(0, idx - offset),
   }
 }
