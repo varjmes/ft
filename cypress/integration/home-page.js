@@ -18,7 +18,7 @@ describe('Homepage', () => {
   it('should contain the app subheading', () => {
     cy.get('[data-cy=subheading]')
       .should('be.visible')
-      .and('contain', 'Search our headlines, today.')
+      .and('contain', 'Search all of the Financial Times headlines, today.')
   })
 
   it('should contain the headline search', () => {
