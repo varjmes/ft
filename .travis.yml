@@ -22,6 +22,8 @@ before_script:
 - npm start -- --silent &
 
 script:
+# Run jest with maxWorkers to limit the amount of threads spawned in CI
+- npm run test -- --maxWorkers=2
 - npm run cypress:run
 
 deploy:
