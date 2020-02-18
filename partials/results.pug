@@ -1,10 +1,10 @@
 .o-grid-row(data-o-grid-colspan='center 12 S10 L8')
   .o-teaser-collection
-    if results[0].results
+    if data.results
       include ./pagination
       h2.o-teaser-collection__heading.o-teaser-collection__heading(data-cy='results-header') Search results for "#{term}"
       ul.o-teaser-collection__items(data-cy='results-list')
-        each result in results[0].results
+        each result in data.results
           li.o-teaser-collection__item
             .o-teaser.o-teaser--large(data-o-component='o-teaser')
               .o-teaser__content

@@ -1,5 +1,8 @@
 const axios = require('axios')
 const logger = require('./logger')
+const paginate = require('./paginate')
+
+const offset = 20
 
 const ftApi = axios.create({
   baseURL: 'http://api.ft.com/content/search/v1',
@@ -10,8 +13,11 @@ const ftApi = axios.create({
   },
 })
 
-const search = async (term, index = 0) => {
-  let results = []
+const search = async (term, index) => {
+  const data = {
+    results: {},
+    pagination: {},
+  }
 
   try {
     logger.info(`🔎 Searching headlines for: ${term}`)
@@ -24,12 +30,15 @@ const search = async (term, index = 0) => {
       },
     })
 
-    results = response.data.results
+    // eslint-disable-next-line prefer-destructuring
+    const apiResults = response.data.results[0]
+    data.results = apiResults.results
+    data.pagination = paginate(index, offset, apiResults.indexCount)
   } catch (error) {
     logger.error(error)
   }
 
-  return results
+  return data
 }
 
 module.exports = search

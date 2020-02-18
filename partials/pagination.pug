@@ -1,18 +1,14 @@
-- var idx = index || 0
-- var offset = 20
-- var totalResults = results[0].indexCount
-- var maxOffset = Math.min(idx + 20, totalResults)
-- var minOffset = Math.max(0, idx - 20)
+- var pagination = data.pagination
 
 .o-grid-row(data-o-grid-colspan='center 12 S10').text--center
   .pagination
-    if idx > 0
-      a.button__previous.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-left(href=`/search?q=${term}&index=${minOffset}`, data-cy='previous')
+    if index > 0
+      a.button__previous.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-left(href=`/search?q=${term}&index=${pagination.previousIndex}`, data-cy='previous')
         | Previous page
 
     span.counter
-      | Viewing results #{idx}&ndash;#{maxOffset} of #{totalResults}
+      | Viewing results #{index}&ndash;#{pagination.nextIndex} of #{pagination.totalResults}
     
-    if idx + offset < totalResults
-      a.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-right(href=`/search?q=${term}&index=${maxOffset}`, data-cy='next')
+    if !!pagination.nextIndex
+      a.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-right(href=`/search?q=${term}&index=${pagination.nextIndex}`, data-cy='next')
         | Next page

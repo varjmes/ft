@@ -35,9 +35,10 @@ app.get('/', (req, res, next) => {
 })
 
 app.get('/search', async (req, res, next) => {
-  const { q: term, index } = req.query
-  const results = await search(term, index)
-  res.render('index', { term, results, index: parseInt(index, 10) })
+  const { q: term, index = 0 } = req.query
+  const posIndex = Math.max(0, parseInt(index, 10))
+  const data = await search(term, posIndex)
+  res.render('index', { term, data, index: posIndex })
 })
 
 app.use((req, res, next) => {
