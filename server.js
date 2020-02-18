@@ -21,12 +21,12 @@ if (process.env.NODE_ENV !== 'test') {
 
 app.set('views', path.join(__dirname, 'pages'), { maxAge: 86400000 })
 app.set('view engine', 'pug')
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   indentedSyntax: false,
 }))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(httpsRedirect)
 app.get('/', (req, res, next) => {

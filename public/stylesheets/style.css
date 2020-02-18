@@ -10,10 +10,20 @@
   margin-bottom: var(--o-spacing-s8); }
 
 .pagination {
-  margin: var(--o-spacing-s4) 0; }
+  margin: var(--o-spacing-s4) 0 var(--o-spacing-s6) 0; }
 
 .counter {
+  display: none;
   margin: 0 var(--o-spacing-s3); }
+  @media (min-width: 768px) {
+    .counter {
+      display: inline-block; } }
+
+.button__previous {
+  margin-right: var(--o-spacing-s3); }
+  @media (min-width: 768px) {
+    .button__previous {
+      margin: 0; } }
 
 .text--center {
   text-align: center; }
