@@ -2,13 +2,13 @@
 
 .o-grid-row(data-o-grid-colspan='center 12 S10').text--center
   .pagination
-    if index > 0
+    if pagination.hasPrevious
       a.button__previous.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-left(href=`/search?q=${term}&index=${pagination.previousIndex}`, data-cy='previous')
         | Previous page
 
     span.counter
       | Viewing results #{index}&ndash;#{pagination.nextIndex} of #{pagination.totalResults}
     
-    if !!pagination.nextIndex
+    if pagination.hasNext
       a.o-buttons.o-buttons--secondary.o-buttons-icon.o-buttons-icon--arrow-right(href=`/search?q=${term}&index=${pagination.nextIndex}`, data-cy='next')
         | Next page
