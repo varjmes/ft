@@ -22,7 +22,7 @@
     "node-sass-middleware": "0.11.0",
     "pino": "5.16.0",
     "pino-pretty": "3.6.0",
-    "pug": "2.0.4"
+    "pug": "3.0.0"
   },
   "devDependencies": {
     "axe-core": "3.5.1",
